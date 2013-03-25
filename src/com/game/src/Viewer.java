@@ -33,14 +33,14 @@ public class Viewer {
 
 		points = new ArrayList<Point>();
 		Random rand = new Random();
-		for(int i = 0; i < 10000; i++){
+		for (int i = 0; i < 10000; i++) {
 			points.add(new Point(rand.nextFloat() - 0.5f, rand.nextFloat() - 0.5f, -rand.nextFloat() * 200));
 		}
 		location = new Vector3f(0f, 0f, 0f);
 		rotation = new Vector3f(0f, 0f, 0f);
-		try{
+		try {
 			m = Model.getModel("res/teste.obj");
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		glMatrixMode(GL_PROJECTION);
@@ -76,8 +76,8 @@ public class Viewer {
 
 		float mx = Mouse.getDX();
 		float my = Mouse.getDY();
-		mx *= 0.25f;
-		my *= 0.25f;
+		mx *= 0.15f;
+		my *= 0.15f;
 
 		rotation.y += mx;
 		if (rotation.y > 360) rotation.y -= 360;
@@ -127,24 +127,25 @@ public class Viewer {
 		glRotatef(rotation.y, 0f, 1f, 0f);
 		glRotatef(rotation.z, 0f, 0f, 1f);
 		glTranslatef(location.x, location.y, location.y);
-		for(Point p: points) {
+		for (Point p : points) {
 			p.render();
 		}
 		m.render();
 		glPopMatrix();
 	}
-	
-	private class Point{
+
+	private class Point {
 		float x, y, z;
-		public Point(float x, float y, float z){
+
+		public Point(float x, float y, float z) {
 			this.x = x;
 			this.y = y;
 			this.z = z;
 		}
-		
-		public void render(){
+
+		public void render() {
 			glBegin(GL_POINTS);
-				glVertex3f(x, y, z);
+			glVertex3f(x, y, z);
 			glEnd();
 		}
 	}
