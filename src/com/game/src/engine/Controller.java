@@ -5,13 +5,18 @@ import org.lwjgl.util.vector.Vector3f;
 
 public class Controller {
 
-	public Vector3f rotation, location;
+	public Vector3f rotation = null;
+	public Vector3f location = null;
 	boolean inMenu = false;
 	boolean checkesc = true;
 	private InputHandler input = new InputHandler();
 
-	public void moveController() {
+	public Controller() {
+		rotation = new Vector3f();
+		location = new Vector3f();
+	}
 
+	public void moveController() {
 		float walkspeed = 0.15f;
 
 		float mx = Mouse.getDX();
