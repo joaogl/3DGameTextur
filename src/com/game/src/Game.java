@@ -9,6 +9,7 @@ import static org.lwjgl.util.glu.GLU.gluPerspective;
 
 import com.game.src.engine.Controller;
 import com.game.src.engine.InputHandler;
+import com.game.src.graphics.Camera;
 import com.game.src.graphics.Render;
 
 public class Game implements Runnable {
@@ -19,7 +20,8 @@ public class Game implements Runnable {
 	private Render render;
 	private Model m;
 	InputHandler input = new InputHandler();
-	Controller controller = new Controller();
+	Camera cam;
+	Controller controller;
 
 	public Game() {
 		render = new Render();
@@ -40,16 +42,15 @@ public class Game implements Runnable {
 			e.printStackTrace();
 		}
 
+		cam = new Camera(70, (float) Display.getWidth() / (float) Display.getHeight(), 0.3f, 1000);
+		controller = new Controller(cam);
 		try {
 			m = Model.getModel("res/teste.obj");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		gluPerspective(30f, (float) (640 / 480), 0.3f, 100f);
-		glMatrixMode(GL_MODELVIEW);
-		glEnable(GL_DEPTH_TEST);
+		//gluPerspective(30f, (float) (640 / 480), 0.3f, 100f);
 	}
 
 	public void start() {
@@ -108,11 +109,7 @@ public class Game implements Runnable {
 		//render.tile(px, py, size);
 		//render.setColor(1.0f, 0.0f, 0.0f);
 		//render.tile(bx, by, size);
-		glRotatef(controller.rotation.x, 1f, 0f, 0f);
-		glRotatef(controller.rotation.y, 0f, 1f, 0f);
-		glRotatef(controller.rotation.z, 0f, 0f, 1f);
-		glTranslatef(controller.location.x, controller.location.y, controller.location.y);
-		System.out.println(controller.location.x + ":" + controller.location.y + ":" + controller.location.y);
+		cam.useView();
 		m.render();
 		glPopMatrix();
 		Display.update();

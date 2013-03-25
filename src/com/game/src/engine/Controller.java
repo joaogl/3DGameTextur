@@ -4,17 +4,16 @@ import org.lwjgl.input.Mouse;
 import org.lwjgl.util.vector.Vector3f;
 
 import com.game.src.Game;
+import com.game.src.graphics.Camera;
 
 public class Controller {
 
-	public Vector3f rotation = null;
-	public Vector3f location = null;
 	boolean inMenu = false;
 	boolean checkesc = true;
+	Camera cam;
 
-	public Controller() {
-		rotation = new Vector3f();
-		location = new Vector3f();
+	public Controller(Camera cam) {
+		this.cam = cam;
 	}
 
 	public void moveController() {
@@ -49,45 +48,33 @@ public class Controller {
 			}).start();
 		}
 
-		if (!inMenu) rotation.y += mx;
-		if (rotation.y > 360) rotation.y -= 360;
-		if (!inMenu) rotation.x -= my;
-		if (rotation.x > 85) rotation.x = 85;
-		if (rotation.x < -85) rotation.x = -85;
+		if (!inMenu) cam.setRY(cam.getRY() + mx);
+		if (cam.getRY() > 360) cam.setRY(cam.getRY() - 360);
+		if (!inMenu) cam.setRX(cam.getRX() - my);
+		if (cam.getRX() > 85) cam.setRX(85);
+		if (cam.getRX() < -85) cam.setRX(-85);
 
 		if (InputHandler.speedup && !InputHandler.slowdown) walkspeed = 0.30f;
 		if (!InputHandler.speedup && InputHandler.slowdown) walkspeed = 0.10f;
 
 		if (InputHandler.up && !InputHandler.down) {
-			float cz = (float) (walkspeed * 2 * Math.cos(Math.toRadians(rotation.y)));
-			float cx = (float) (walkspeed * Math.sin(Math.toRadians(rotation.x)));
-			location.z += cz;
-			location.x -= cx;
+			cam.moves(walkspeed, 1);
 		}
 
 		if (!InputHandler.up && InputHandler.down) {
-			float cz = (float) (walkspeed * 2 * Math.cos(Math.toRadians(rotation.y)));
-			float cx = (float) (walkspeed * Math.sin(Math.toRadians(rotation.x)));
-			location.z -= cz;
-			location.x += cx;
+			cam.moves(-walkspeed, 1);
 		}
 
 		if (!InputHandler.left && InputHandler.right) {
-			float cz = (float) (walkspeed * 2 * Math.cos(Math.toRadians(rotation.y + 90)));
-			float cx = (float) (walkspeed * Math.sin(Math.toRadians(rotation.x + 90)));
-			location.z += cz;
-			location.x -= cx;
+			cam.moves(-walkspeed, 0);
 		}
 
 		if (InputHandler.left && !InputHandler.right) {
-			float cz = (float) (walkspeed * 2 * Math.cos(Math.toRadians(rotation.y + 90)));
-			float cx = (float) (walkspeed * Math.sin(Math.toRadians(rotation.x + 90)));
-			location.z -= cz;
-			location.x += cx;
+			cam.moves(walkspeed, 0);
 		}
 
-		if (InputHandler.flyup && !InputHandler.flydown) location.y -= walkspeed;
-		if (!InputHandler.flyup && InputHandler.flydown) location.y += walkspeed;
+		//if (InputHandler.flyup && !InputHandler.flydown) location.y -= walkspeed;
+		//if (!InputHandler.flyup && InputHandler.flydown) location.y += walkspeed;
 
 	}
 
