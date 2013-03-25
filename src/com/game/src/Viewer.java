@@ -23,8 +23,9 @@ public class Viewer {
 	public void run() {
 		try {
 			Display.setDisplayMode(new DisplayMode(1200, 900));
-			Display.setTitle("Model Viewer");
+			Display.setTitle("Unnamed Game");
 			Display.create();
+			Mouse.setGrabbed(true);
 		} catch (LWJGLException e) {
 			e.printStackTrace();
 			Display.destroy();
@@ -49,6 +50,12 @@ public class Viewer {
 		glMatrixMode(GL_MODELVIEW);
 		glEnable(GL_DEPTH_TEST);
 
+		try {
+			Mouse.create();
+		} catch (LWJGLException e) {
+			e.printStackTrace();
+		}
+		
 		while (!Display.isCloseRequested()) {
 			input();
 			render();
@@ -73,11 +80,18 @@ public class Viewer {
 		boolean slowdown = Keyboard.isKeyDown(Keyboard.KEY_LCONTROL);
 
 		float walkspeed = 0.15f;
+	
+		if ((Mouse.getEventDX() != 0) || (Mouse.getEventDY() != 0)) {
+			System.out.println("H");
+		} else {
+			System.out.println(Mouse.EVENT_SIZE + " : " + ((900 / 2) - Mouse.getY()));			
+		}
+		//Mouse.setCursorPosition((int) 1200 / 2, (int) 900 / 2);
 
 		float mx = Mouse.getDX();
 		float my = Mouse.getDY();
-		mx *= 0.15f;
-		my *= 0.15f;
+		mx *= 0.25f;
+		my *= 0.25f;
 
 		rotation.y += mx;
 		if (rotation.y > 360) rotation.y -= 360;
@@ -85,7 +99,7 @@ public class Viewer {
 		if (rotation.x > 85) rotation.x = 85;
 		if (rotation.x < -85) rotation.x = -85;
 
-		if (speedup && !slowdown) walkspeed = 0.25f;
+		if (speedup && !slowdown) walkspeed = 0.30f;
 		if (!speedup && slowdown) walkspeed = 0.10f;
 
 		if (up && !down) {
