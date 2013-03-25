@@ -16,7 +16,7 @@ public class Controller {
 
 		float mx = Mouse.getDX();
 		float my = Mouse.getDY();
-		System.out.println(Mouse.getDX());
+		System.out.println(mx);
 		mx *= 0.25f;
 		my *= 0.25f;
 
@@ -25,7 +25,6 @@ public class Controller {
 				public void run() {
 					if (checkesc) {
 						checkesc = false;
-						System.out.println("a");
 						if (inMenu) inMenu = false;
 						else if (!inMenu) inMenu = true;
 						try {

@@ -50,16 +50,6 @@ public class Game implements Runnable {
 		gluPerspective(30f, (float) (640 / 480), 0.3f, 100f);
 		glMatrixMode(GL_MODELVIEW);
 		glEnable(GL_DEPTH_TEST);
-
-		while (!Display.isCloseRequested()) {
-			render();
-			Display.update();
-			Display.sync(60);
-			controller.moveController();
-		}
-
-		Display.destroy();
-		System.exit(0);
 	}
 
 	public void start() {
@@ -69,13 +59,13 @@ public class Game implements Runnable {
 	}
 
 	public void run() {
-		init();
 		long lastTime = System.nanoTime();
 		double ns = 1000000000.0 / 60.0;
 		double delta = 0;
 		long lastTimer = System.currentTimeMillis();
 		int frames = 0;
 		int updates = 0;
+		init();
 		while (running) {
 			long now = System.nanoTime();
 			delta += (now - lastTime) / ns;
@@ -87,6 +77,8 @@ public class Game implements Runnable {
 			}
 			render();
 			frames++;
+			Display.update();
+			Display.sync(60);
 			while (System.currentTimeMillis() - lastTimer > 1000) {
 				lastTimer += 1000;
 				System.out.println(updates + " ups, " + frames + " fps.");
@@ -96,6 +88,7 @@ public class Game implements Runnable {
 			check();
 		}
 		Display.destroy();
+		System.exit(0);
 	}
 
 	private void check() {
@@ -103,11 +96,12 @@ public class Game implements Runnable {
 	}
 
 	private void update() {
-		input.udate();
+		controller.moveController();
+		input.update();
 	}
 
 	private void render() {
-		int size = 20;
+		//int size = 20;
 		glPushMatrix();
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		//glEnable(GL_LIGHT0);

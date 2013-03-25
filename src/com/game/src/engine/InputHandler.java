@@ -6,7 +6,7 @@ public class InputHandler {
 
 	boolean up, down, left, right, flyup, flydown, speedup, slowdown, esc;
 
-	public void udate() {
+	public void update() {
 		up = Keyboard.isKeyDown(Keyboard.KEY_W);
 		down = Keyboard.isKeyDown(Keyboard.KEY_S);
 		left = Keyboard.isKeyDown(Keyboard.KEY_A);
