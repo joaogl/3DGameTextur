@@ -112,6 +112,7 @@ public class Game implements Runnable {
 		glRotatef(controller.rotation.y, 0f, 1f, 0f);
 		glRotatef(controller.rotation.z, 0f, 0f, 1f);
 		glTranslatef(controller.location.x, controller.location.y, controller.location.y);
+		System.out.println(controller.location.x + ":" + controller.location.y + ":" + controller.location.y);
 		m.render();
 		glPopMatrix();
 		Display.update();
