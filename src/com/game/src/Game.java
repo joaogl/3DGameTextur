@@ -108,8 +108,6 @@ public class Game implements Runnable {
 		//render.tile(px, py, size);
 		//render.setColor(1.0f, 0.0f, 0.0f);
 		//render.tile(bx, by, size);
-
-		if (controller.location == null) System.out.println("	A");
 		glRotatef(controller.rotation.x, 1f, 0f, 0f);
 		glRotatef(controller.rotation.y, 0f, 1f, 0f);
 		glRotatef(controller.rotation.z, 0f, 0f, 1f);

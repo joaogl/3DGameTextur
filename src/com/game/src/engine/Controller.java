@@ -9,7 +9,7 @@ public class Controller {
 	public Vector3f location = null;
 	boolean inMenu = false;
 	boolean checkesc = true;
-	private InputHandler input = new InputHandler();
+	public InputHandler input = new InputHandler();
 
 	public Controller() {
 		rotation = new Vector3f();
@@ -21,7 +21,6 @@ public class Controller {
 
 		float mx = Mouse.getDX();
 		float my = Mouse.getDY();
-		System.out.println(mx);
 		mx *= 0.25f;
 		my *= 0.25f;
 
@@ -42,6 +41,7 @@ public class Controller {
 				}
 			}).start();
 		}
+		System.out.println(input.esc);
 
 		if (!inMenu) rotation.y += mx;
 		if (rotation.y > 360) rotation.y -= 360;
