@@ -14,6 +14,8 @@ import java.awt.image.BufferedImage;
 import java.awt.image.PixelGrabber;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.IntBuffer;
@@ -38,7 +40,15 @@ public class TextureLoader {
             return loadedTextures.get(filename);
         }
 
-        File imageFile = new File(filename);
+        final URL url = getClass().getResource( filename );
+		File file = null;
+		try {
+			file = new File( url.toURI() );
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+        
+        File imageFile = file;
 
         // System.err.println("For filename " + filename + ", canonical path = " + imageFile.getCanonicalPath());
         if (!imageFile.exists()) {

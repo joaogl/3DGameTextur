@@ -36,7 +36,8 @@ public class Build implements BuilderInterface {
     public HashMap<String, Material> materialLib = new HashMap<String, Material>();
     private Material currentMaterialBeingParsed = null;
     public HashMap<String, Material> mapLib = new HashMap<String, Material>();
-    private Material currentMapBeingParsed = null;
+    @SuppressWarnings("unused")
+	private Material currentMapBeingParsed = null;
     public int faceTriCount = 0;
     public int faceQuadCount = 0;
     public int facePolyCount = 0;

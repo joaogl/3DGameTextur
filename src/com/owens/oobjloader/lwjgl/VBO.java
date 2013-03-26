@@ -9,10 +9,6 @@ package com.owens.oobjloader.lwjgl;
 import java.nio.IntBuffer;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL15;
-import java.awt.Color;
-import java.awt.image.BufferedImage;
-import java.awt.*;
-import java.util.*;
 import org.lwjgl.BufferUtils;
 
 public class VBO {

@@ -7,9 +7,6 @@ package com.owens.oobjloader.builder;
 // licenses, or contact me for use of another license.
 
 import java.util.*;
-import java.text.*;
-import java.io.*;
-import java.io.IOException;
 
 public class Face {
 
