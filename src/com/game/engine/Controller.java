@@ -16,7 +16,7 @@ public class Controller {
 	}
 
 	public void moveController() {
-		float walkspeed = 0.15f;
+		float walkspeed = 0.05f;
 
 		float mx = Mouse.getDX();
 		float my = Mouse.getDY();
@@ -53,8 +53,8 @@ public class Controller {
 		if (cam.getRX() > 85) cam.setRX(85);
 		if (cam.getRX() < -85) cam.setRX(-85);
 
-		if (InputHandler.speedup && !InputHandler.slowdown) walkspeed = 0.30f;
-		if (!InputHandler.speedup && InputHandler.slowdown) walkspeed = 0.10f;
+		if (InputHandler.speedup && !InputHandler.slowdown) walkspeed = 0.1f;
+		if (!InputHandler.speedup && InputHandler.slowdown) walkspeed = 0.01f;
 
 		if (InputHandler.up && !InputHandler.down) {
 			cam.moves(walkspeed, 1);

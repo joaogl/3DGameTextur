@@ -18,10 +18,10 @@ public class Camera {
 	private float near;
 	private float far;
 
-	public Camera(float fov, float aspect, float near, float far) {
-		x = 0;
-		y = 0;
-		z = 0;
+	public Camera(float fov, float aspect, float near, float far, float startX, float startY, float startZ) {
+		x = startX;
+		y = startY;
+		z = startZ;
 
 		rx = 0;
 		ry = 0;

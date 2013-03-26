@@ -23,7 +23,7 @@ public class Game implements Runnable {
 	Camera cam;
 	Controller controller;
     String filename = "/teste3.obj";
-    String defaultTextureMaterial = "/wood.png";
+    String defaultTextureMaterial = "/wood2.jpg";
 	RenderModel model;
 
 	public Game() {
@@ -47,7 +47,7 @@ public class Game implements Runnable {
 		
 		model = new RenderModel(filename, defaultTextureMaterial);
 		
-		cam = new Camera(70, (float) Display.getWidth() / (float) Display.getHeight(), 0.3f, 1000);
+		cam = new Camera(100, (float) Display.getWidth() / (float) Display.getHeight(), 0.3f, 1000, 0, -1, 0);
 		controller = new Controller(cam);
 		glLoadIdentity();
 		// gluPerspective(30f, (float) (640 / 480), 0.3f, 100f);
