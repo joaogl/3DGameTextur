@@ -4,7 +4,7 @@ import org.lwjgl.input.Keyboard;
 
 public class InputHandler {
 
-	public static boolean up, down, left, right, flyup, flydown, speedup, slowdown, esc;
+	public static boolean up, down, left, right, jump, speedup, slowdown, esc;
 
 	public InputHandler() {
 
@@ -16,8 +16,7 @@ public class InputHandler {
 		left = Keyboard.isKeyDown(Keyboard.KEY_A);
 		right = Keyboard.isKeyDown(Keyboard.KEY_D);
 
-		flyup = Keyboard.isKeyDown(Keyboard.KEY_E);
-		flydown = Keyboard.isKeyDown(Keyboard.KEY_Q);
+		jump = Keyboard.isKeyDown(Keyboard.KEY_SPACE);
 
 		speedup = Keyboard.isKeyDown(Keyboard.KEY_LSHIFT);
 		slowdown = Keyboard.isKeyDown(Keyboard.KEY_LCONTROL);

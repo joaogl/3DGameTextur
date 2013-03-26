@@ -9,14 +9,16 @@ public class Controller {
 
 	boolean inMenu = false;
 	boolean checkesc = true;
+	boolean checkjump = true;
 	Camera cam;
-	
+
 	public Controller(Camera cam) {
 		this.cam = cam;
 	}
 
 	public void moveController() {
 		float walkspeed = 0.05f;
+		final float jumpspeed = walkspeed * 15;
 
 		float mx = Mouse.getDX();
 		float my = Mouse.getDY();
@@ -72,8 +74,41 @@ public class Controller {
 			cam.moves(walkspeed, 0);
 		}
 
-		//if (InputHandler.flyup && !InputHandler.flydown) location.y -= walkspeed;
-		//if (!InputHandler.flyup && InputHandler.flydown) location.y += walkspeed;
+		if (InputHandler.jump) {
+			new Thread(new Runnable() {
+				public void run() {
+					if (checkjump) {
+						checkjump = false;
+						try {
+							cam.setY(cam.getY() - jumpspeed / 4);
+							Thread.sleep(50);
+							cam.setY(cam.getY() - jumpspeed / 4);
+							Thread.sleep(50);
+							cam.setY(cam.getY() - jumpspeed / 4);
+							Thread.sleep(50);
+							cam.setY(cam.getY() - jumpspeed / 4);
+							Thread.sleep(50);
+							cam.setY(cam.getY() + jumpspeed / 4);
+							Thread.sleep(50);
+							cam.setY(cam.getY() + jumpspeed / 4);
+							Thread.sleep(50);
+							cam.setY(cam.getY() + jumpspeed / 4);
+							Thread.sleep(50);
+							cam.setY(cam.getY() + jumpspeed / 4);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+
+						try {
+							Thread.sleep(350);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+						checkjump = true;
+					}
+				}
+			}).start();
+		}
 
 	}
 
