@@ -12,7 +12,6 @@ public class RenderModel {
 			for (int NFACE = 0; NFACE < faces.size(); NFACE++) {
 				int[][] face = faces.get(NFACE);
 
-				// Get the tree triangle point indexes
 				int[] pointA = face[0];
 				int[] pointB = face[1];
 				int[] pointC = face[2];
