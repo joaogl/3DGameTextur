@@ -10,7 +10,7 @@ public class Controller {
 	boolean inMenu = false;
 	boolean checkesc = true;
 	Camera cam;
-
+	
 	public Controller(Camera cam) {
 		this.cam = cam;
 	}
