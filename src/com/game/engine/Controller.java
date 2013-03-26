@@ -1,7 +1,6 @@
-package com.game.src.engine;
+package com.game.engine;
 
 import org.lwjgl.input.Mouse;
-import org.lwjgl.util.vector.Vector3f;
 
 import com.game.src.Game;
 import com.game.src.graphics.Camera;

@@ -1,4 +1,4 @@
-package com.game.src.engine;
+package com.game.engine;
 
 import org.lwjgl.input.Keyboard;
 
