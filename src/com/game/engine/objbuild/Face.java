@@ -1,10 +1,4 @@
-package com.owens.oobjloader.builder;
-
-// Written by Sean R. Owens, sean at guild dot net, released to the
-// public domain. Share and enjoy. Since some people argue that it is
-// impossible to release software to the public domain, you are also free
-// to use this code under any version of the GPL, LPGL, Apache, or BSD
-// licenses, or contact me for use of another license.
+package com.game.engine.objbuild;
 
 import java.util.*;
 
@@ -22,7 +16,6 @@ public class Face {
     }
     public VertexNormal faceNormal = new VertexNormal(0, 0, 0);
 
-    // @TODO: This code assumes the face is a triangle.  
     public void calculateTriangleNormal() {
         float[] edge1 = new float[3];
         float[] edge2 = new float[3];

@@ -6,15 +6,15 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.owens.oobjloader.builder.Build;
-import com.owens.oobjloader.builder.Face;
-import com.owens.oobjloader.builder.FaceVertex;
-import com.owens.oobjloader.builder.Material;
-import com.owens.oobjloader.lwjgl.Scene;
-import com.owens.oobjloader.lwjgl.TextureLoader;
-import com.owens.oobjloader.lwjgl.VBO;
-import com.owens.oobjloader.lwjgl.VBOFactory;
-import com.owens.oobjloader.parser.Parse;
+import com.game.engine.objbuild.Build;
+import com.game.engine.objbuild.Face;
+import com.game.engine.objbuild.FaceVertex;
+import com.game.engine.objbuild.Material;
+import com.game.engine.objlwjgl.Scene;
+import com.game.engine.objlwjgl.TextureLoader;
+import com.game.engine.objlwjgl.VBO;
+import com.game.engine.objlwjgl.VBOFactory;
+import com.game.engine.objparser.Parse;
 
 public class RenderModel {
 	Scene scene = null;

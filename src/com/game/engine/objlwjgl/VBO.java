@@ -1,10 +1,4 @@
-package com.owens.oobjloader.lwjgl;
-
-// Written by Sean R. Owens, sean at guild dot net, released to the
-// public domain. Share and enjoy. Since some people argue that it is
-// impossible to release software to the public domain, you are also free
-// to use this code under any version of the GPL, LPGL, Apache, or BSD
-// licenses, or contact me for use of another license.
+package com.game.engine.objlwjgl;
 
 import java.nio.IntBuffer;
 import org.lwjgl.opengl.GL11;
@@ -13,10 +7,8 @@ import org.lwjgl.BufferUtils;
 
 public class VBO {
 
-    // sizeof float/sizeof int
     public final static int FL_SIZE = 4;
     public final static int INDICE_SIZE_BYTES = 4;
-    // Vertex Attribute Data - i.e. x,y,z then normalx, normaly, normalz, then texture u,v - so 8 floats.
     public final static int ATTR_V_FLOATS_PER = 3;
     public final static int ATTR_N_FLOATS_PER = 3;
     public final static int ATTR_T_FLOATS_PER = 2;
@@ -36,8 +28,8 @@ public class VBO {
 
 
     private int textId = 0;
-    private int verticeAttributesID = 0;      // Vertex Attributes VBO ID
-    private int indicesID = 0;      // indice VBO ID
+    private int verticeAttributesID = 0; 
+    private int indicesID = 0;   
     private int indicesCount = 0;
 
     public VBO(int textId, int verticeAttributesID, int indicesID, int indicesCount) {
@@ -51,7 +43,7 @@ public class VBO {
 
 
         GL11.glEnable(GL11.GL_TEXTURE_2D);
-        GL11.glBindTexture(GL11.GL_TEXTURE_2D, textId);    // Bind The Texture
+        GL11.glBindTexture(GL11.GL_TEXTURE_2D, textId);    
 
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, verticeAttributesID);
 
@@ -74,7 +66,6 @@ public class VBO {
     }
 
     public void destroy() {
-        // NOTE: We don't delete the textureID
         IntBuffer ib = BufferUtils.createIntBuffer(1);
         ib.reset();
         ib.put(verticeAttributesID);

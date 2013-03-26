@@ -1,12 +1,6 @@
-package com.owens.oobjloader.builder;
+package com.game.engine.objbuild;
 
-// Written by Sean R. Owens, sean at guild dot net, released to the
-// public domain. Share and enjoy. Since some people argue that it is
-// impossible to release software to the public domain, you are also free
-// to use this code under any version of the GPL, LPGL, Apache, or BSD
-// licenses, or contact me for use of another license.
-
-import com.owens.oobjloader.parser.BuilderInterface;
+import com.game.engine.objparser.BuilderInterface;
 
 
 public class Material {

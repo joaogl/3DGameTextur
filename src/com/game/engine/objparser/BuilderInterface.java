@@ -1,12 +1,4 @@
-package com.owens.oobjloader.parser;
-
-// Written by Sean R. Owens, sean at guild dot net, released to the
-// public domain. Share and enjoy. Since some people argue that it is
-// impossible to release software to the public domain, you are also free
-// to use this code under any version of the GPL, LPGL, Apache, or BSD
-// licenses, or contact me for use of another license.
-
-
+package com.game.engine.objparser;
 
 public interface BuilderInterface {
 
@@ -45,22 +37,6 @@ public interface BuilderInterface {
 
     public void addLine(int values[]);
 
-    // The param for addFace is an array of vertex indices.   This array should have a length that is a multiple of 3.  
-    //
-    // For each triplet of values;
-    //
-    // The first value is an absolute or relative index to a geometric vertex. (VertexGeometric)
-    // The second value is an absolute or relative index to a vertex texture coordinate. (VertexTexture)
-    // The third vertex is an absolute or relative index to a vertex normal.  (VertexNormal)
-    //
-    // The indices for the texture and normal MAY be empty in which case they will be set equal to the special
-    // value defined in BuilderInterface, EMPTY_VERTEX_VALUE.
-    //
-    // Absolute indices are positive values that specify a vertex/texture/normal by it's absolute position within the OBJ file.
-    //
-    // Relative indices are negative values that specify a vertex/texture/normal by it's position relative to the line the index
-    // is on, i.e. a line specifying a face (triangle) may specify an geometry vertex as -5 which means the 5 most recently seen 
-    // geometry vertex.
     public void addFace(int vertexIndices[]);
 
     public void addObjectName(String name);
